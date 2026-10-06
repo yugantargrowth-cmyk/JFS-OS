@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jangid Furniture Studio – Premium Modular Furniture in Ahmedabad</title>
+<meta name="description" content="Jangid Furniture Studio offers premium modular kitchens, wardrobes, aluminium & glass partitions, office furniture, and PVC cabinets in Ahmedabad, Gujarat.">
+<meta property="og:title" content="Jangid Furniture Studio – Transforming Spaces, Crafting Excellence">
+<meta property="og:description" content="Custom Wood, PVC, Aluminium & Glass Works in Ahmedabad. 10+ Years | 500+ Projects.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪑</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #E07B39;
+    --orange-dark: #c4672a;
+    --orange-light: #f5a673;
+    --dark: #1F1F1F;
+    --dark2: #2d2d2d;
+    --bg: #F9F7F4;
+    --white: #FFFFFF;
+    --grey: #6B6B6B;
+    --grey-light: #e8e4df;
+    --border: #ddd8d0;
+    --shadow: 0 4px 24px rgba(0,0,0,0.10);
+    --shadow-lg: 0 12px 48px rgba(0,0,0,0.15);
+    --radius: 12px;
+    --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--dark); overflow-x: hidden; }
+  h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .section { padding: 90px 0; }
+  .section-title { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+  .section-sub { color: var(--grey); font-size: 1.05rem; line-height: 1.7; max-width: 560px; }
+  .section-header { margin-bottom: 56px; }
+  .section-header .label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; display: block; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; cursor: pointer; border: none; transition: var(--transition); }
+  .btn-primary { background: var(--orange); color: var(--white); }
+  .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(224,123,57,0.35); }
+  .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.7); }
+  .btn-outline:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+  .btn-dark { background: var(--dark); color: var(--white); }
+  .btn-dark:hover { background: var(--dark2); transform: translateY(-2px); box-shadow: var(--shadow); }
+
+  /* PAGE MANAGEMENT */
+  .page { display: none; animation: fadeIn 0.4s ease; }
+  .page.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* FADE UP ANIMATION */
+  .fade-up { opacity: 0; transform: translateY(36px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ========== HEADER ========== */
+  #header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(255,255,255,0.96); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: padding var(--transition), box-shadow var(--transition);
+    padding: 18px 0;
+  }
+  #header.scrolled { padding: 10px 0; box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .logo { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+  .logo-grid { width: 40px; height: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 3px; flex-shrink: 0; }
+  .logo-grid span { border-radius: 3px; display: block; }
+  .logo-grid .q1 { background: var(--orange); }
+  .logo-grid .q2 { background: #3d3d3d; }
+  .logo-grid .q3 { background: #2a2a2a; }
+  .logo-grid .q4 { background: #b0aeb5; }
+  .logo-text .name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--dark); line-height: 1.1; letter-spacing: 0.02em; }
+  .logo-text .tagline-small { font-size: 0.65rem; color: var(--grey); font-weight: 400; letter-spacing: 0.05em; }
+  nav { display: flex; align-items: center; gap: 4px; }
+  nav a { padding: 8px 14px; border-radius: 8px; font-size: 0.9rem; font-weight: 500; color: var(--dark); transition: var(--transition); position: relative; }
+  nav a:hover { color: var(--orange); background: rgba(224,123,57,0.06); }
+  nav a.active { color: var(--orange); }
+  nav a.active::after { content: ''; position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%); width: 18px; height: 2px; background: var(--orange); border-radius: 2px; }
+  .header-cta { display: flex; align-items: center; gap: 12px; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { width: 24px; height: 2px; background: var(--dark); border-radius: 2px; transition: var(--transition); }
+  .mobile-nav { display: none; position: fixed; top: 0; right: 0; bottom: 0; width: 280px; background: var(--white); z-index: 1001; box-shadow: -8px 0 40px rgba(0,0,0,0.15); transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); flex-direction: column; padding: 80px 32px 40px; gap: 8px; }
+  .mobile-nav.open { transform: translateX(0); }
+  .mobile-nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 1000; }
+  .mobile-nav-overlay.open { display: block; }
+  .mobile-nav a { display: block; padding: 14px 0; font-size: 1.1rem; font-weight: 500; color: var(--dark); border-bottom: 1px solid var(--border); transition: var(--transition); }
+  .mobile-nav a:hover { color: var(--orange); padding-left: 8px; }
+  .mobile-close { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--dark); }
+
+  /* ========== HOME PAGE ========== */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, rgba(31,31,31,0.8) 0%, rgba(31,31,31,0.5) 50%, rgba(224,123,57,0.3) 100%),
+    url('https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?w=1800&q=80') center/cover no-repeat;
+    padding: 120px 0 80px;
+  }
+  .hero-content { max-width: 680px; color: var(--white); }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(224,123,57,0.25); border: 1px solid rgba(224,123,57,0.5); color: var(--orange-light); padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px; }
+  .hero h1 { font-size: clamp(2.5rem, 6vw, 4.2rem); font-weight: 900; line-height: 1.12; margin-bottom: 20px; }
+  .hero h1 em { color: var(--orange-light); font-style: normal; }
+  .hero p { font-size: 1.1rem; color: rgba(255,255,255,0.82); line-height: 1.7; margin-bottom: 36px; max-width: 500px; }
+  .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; }
+  .hero-scroll { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.6); font-size: 0.78rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .scroll-dot { width: 2px; height: 40px; background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent); border-radius: 2px; animation: scrollAnim 1.6s ease-in-out infinite; }
+  @keyframes scrollAnim { 0%,100%{transform:scaleY(0.4);transform-origin:top;} 50%{transform:scaleY(1);} }
+
+  /* SERVICES SECTION */
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 24px; }
+  .service-card { background: var(--white); border-radius: var(--radius); padding: 32px 24px; border: 1px solid var(--border); transition: var(--transition); cursor: pointer; position: relative; overflow: hidden; }
+  .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--orange); transform: scaleX(0); transform-origin: left; transition: var(--transition); }
+  .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: transparent; }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon { width: 52px; height: 52px; background: rgba(224,123,57,0.10); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 18px; }
+  .service-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+  .service-card p { font-size: 0.88rem; color: var(--grey); line-height: 1.6; }
+  .service-arrow { display: inline-flex; align-items: center; gap: 4px; color: var(--orange); font-size: 0.82rem; font-weight: 600; margin-top: 14px; transition: var(--transition); }
+  .service-card:hover .service-arrow { gap: 8px; }
+
+  /* WHY CHOOSE US */
+  .why-section { background: var(--dark); color: var(--white); }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; }
+  .why-item { text-align: center; }
+  .why-icon { width: 60px; height: 60px; background: rgba(224,123,57,0.15); border: 1px solid rgba(224,123,57,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin: 0 auto 16px; }
+  .why-item h4 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
+  .why-item p { font-size: 0.82rem; color: rgba(255,255,255,0.55); }
+
+  /* STATS */
+  .stats-bar { background: var(--orange); padding: 52px 0; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; color: var(--white); line-height: 1; }
+  .stat-label { font-size: 0.88rem; color: rgba(255,255,255,0.8); margin-top: 6px; font-weight: 500; }
+
+  /* TESTIMONIALS */
+  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
+  .testimonial-card { background: var(--white); border-radius: var(--radius); padding: 32px; border: 1px solid var(--border); transition: var(--transition); }
+  .testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .stars { color: var(--orange); font-size: 1rem; letter-spacing: 2px; margin-bottom: 16px; }
+  .testimonial-card p { font-size: 0.95rem; color: var(--grey); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .author-avatar { width: 44px; height: 44px; background: var(--orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 700; font-size: 1rem; flex-shrink: 0; }
+  .author-info .name { font-weight: 600; font-size: 0.95rem; }
+  .author-info .loc { font-size: 0.8rem; color: var(--grey); }
+
+  /* CTA BANNER */
+  .cta-banner { background: linear-gradient(135deg, var(--dark) 0%, #3a2a1a 100%); color: var(--white); text-align: center; padding: 80px 24px; position: relative; overflow: hidden; }
+  .cta-banner::before { content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; background: rgba(224,123,57,0.12); border-radius: 50%; }
+  .cta-banner h2 { font-size: clamp(1.8rem, 4vw, 3rem); margin-bottom: 16px; }
+  .cta-banner p { color: rgba(255,255,255,0.7); margin-bottom: 36px; font-size: 1.05rem; }
+  .whatsapp-btn { background: #25D366; color: var(--white); }
+  .whatsapp-btn:hover { background: #20b958; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.35); }
+
+  /* ========== ABOUT PAGE ========== */
+  .about-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .about-img { border-radius: var(--radius); overflow: hidden; position: relative; }
+  .about-img img { width: 100%; height: 480px; object-fit: cover; }
+  .about-img::after { content: ''; position: absolute; bottom: -16px; right: -16px; width: 80%; height: 80%; border: 3px solid var(--orange); border-radius: var(--radius); z-index: -1; }
+  .about-text .about-label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; display: block; }
+  .about-text h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 20px; }
+  .about-text p { color: var(--grey); line-height: 1.8; margin-bottom: 16px; }
+  .about-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .badge { padding: 6px 16px; background: rgba(224,123,57,0.1); color: var(--orange); border-radius: 50px; font-size: 0.82rem; font-weight: 600; }
+
+  .mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .mv-card { padding: 36px; border-radius: var(--radius); }
+  .mv-card.mission { background: var(--orange); color: var(--white); }
+  .mv-card.vision { background: var(--dark); color: var(--white); }
+  .mv-card h3 { font-size: 1.4rem; margin-bottom: 12px; }
+  .mv-card p { font-size: 0.95rem; opacity: 0.85; line-height: 1.7; }
+
+  .values-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+  .value-item { display: flex; align-items: center; gap: 12px; padding: 20px; background: var(--white); border-radius: 10px; border: 1px solid var(--border); font-weight: 600; font-size: 0.95rem; }
+  .value-item::before { content: '✦'; color: var(--orange); font-size: 0.9rem; }
+
+  .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
+  .team-card { background: var(--white); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); transition: var(--transition); }
+  .team-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .team-img { height: 240px; background: linear-gradient(135deg, #e8e4df, #d4cfc9); display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+  .team-info { padding: 24px; }
+  .team-info h4 { font-size: 1.15rem; margin-bottom: 4px; }
+  .team-info .role { color: var(--orange); font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; }
+  .team-info p { font-size: 0.85rem; color: var(--grey); line-height: 1.6; }
+
+  /* ========== SERVICES PAGE ========== */
+  .service-detail { margin-bottom: 80px; }
+  .service-detail-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .service-detail-inner.reverse { direction: rtl; }
+  .service-detail-inner.reverse > * { direction: ltr; }
+  .service-detail-img { border-radius: var(--radius); overflow: hidden; }
+  .service-detail-img img { width: 100%; height: 380px; object-fit: cover; }
+  .service-detail-text .srv-num { font-size: 4rem; font-family: 'Playfair Display', serif; font-weight: 900; color: rgba(224,123,57,0.15); line-height: 1; margin-bottom: -16px; }
+  .service-detail-text h3 { font-size: clamp(1.5rem, 2.5vw, 2rem); margin-bottom: 16px; }
+  .service-detail-text p { color: var(--grey); line-height: 1.8; margin-bottom: 24px; }
+  .feature-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .feature-list li { display: flex; align-items: center; gap: 12px; font-size: 0.92rem; }
+  .feature-list li::before { content: ''; width: 20px; height: 20px; background: var(--orange); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23E07B39'%3E%3Ccircle cx='10' cy='10' r='10' fill='%23E07B39' opacity='.15'/%3E%3Cpath d='M6 10l3 3 5-5' stroke='%23E07B39' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E") center/cover; }
+
+  .process-section { background: var(--dark); color: var(--white); border-radius: 24px; padding: 60px; margin-top: 60px; }
+  .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; position: relative; }
+  .process-steps::before { content: ''; position: absolute; top: 28px; left: 12%; right: 12%; height: 2px; background: rgba(224,123,57,0.3); }
+  .process-step { text-align: center; position: relative; }
+  .step-num { width: 56px; height: 56px; background: var(--orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem; color: var(--white); margin: 0 auto 16px; position: relative; z-index: 1; }
+  .process-step h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; }
+  .process-step p { font-size: 0.8rem; color: rgba(255,255,255,0.55); }
+
+  .materials-section { background: var(--white); border-radius: var(--radius); padding: 48px; border: 1px solid var(--border); margin-top: 48px; }
+  .materials-grid { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 24px; }
+  .material-tag { padding: 10px 20px; border-radius: 50px; background: var(--bg); border: 1px solid var(--border); font-size: 0.9rem; font-weight: 500; display: flex; align-items: center; gap: 8px; }
+  .material-tag::before { content: ''; width: 8px; height: 8px; background: var(--orange); border-radius: 50%; }
+
+  /* ========== GALLERY PAGE ========== */
+  .gallery-filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+  .filter-btn { padding: 10px 20px; border-radius: 50px; border: 1.5px solid var(--border); background: var(--white); font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 500; cursor: pointer; transition: var(--transition); color: var(--dark); }
+  .filter-btn:hover, .filter-btn.active { background: var(--orange); color: var(--white); border-color: var(--orange); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .gallery-item { position: relative; overflow: hidden; border-radius: 10px; cursor: pointer; background: #ddd; }
+  .gallery-item img { width: 100%; height: 240px; object-fit: cover; transition: transform 0.5s ease; display: block; }
+  .gallery-item:nth-child(3n+1) img { height: 300px; }
+  .gallery-item:hover img { transform: scale(1.06); }
+  .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(31,31,31,0.9) 0%, transparent 60%); opacity: 0; transition: var(--transition); display: flex; align-items: flex-end; padding: 20px; }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .gallery-overlay .proj-title { color: var(--white); font-size: 0.88rem; font-weight: 600; line-height: 1.3; }
+  .gallery-overlay .proj-cat { color: var(--orange-light); font-size: 0.75rem; margin-top: 2px; }
+
+  /* LIGHTBOX */
+  .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 2000; align-items: center; justify-content: center; padding: 24px; }
+  .lightbox.open { display: flex; }
+  .lightbox-content { max-width: 900px; width: 100%; position: relative; }
+  .lightbox-img { width: 100%; max-height: 80vh; object-fit: contain; border-radius: 10px; }
+  .lightbox-close { position: absolute; top: -16px; right: -16px; width: 40px; height: 40px; background: var(--white); border-radius: 50%; border: none; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; }
+  .lightbox-info { text-align: center; color: var(--white); margin-top: 16px; }
+  .lightbox-info h4 { font-size: 1.05rem; }
+  .lightbox-info span { font-size: 0.85rem; color: var(--orange-light); }
+  .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.15); border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition); }
+  .lightbox-nav:hover { background: var(--orange); }
+  .lightbox-prev { left: -56px; }
+  .lightbox-next { right: -56px; }
+
+  /* ========== CONTACT PAGE ========== */
+  .contact-info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-bottom: 56px; }
+  .contact-card { background: var(--white); border-radius: var(--radius); padding: 28px; border: 1px solid var(--border); display: flex; align-items: flex-start; gap: 16px; transition: var(--transition); }
+  .contact-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .contact-icon { width: 48px; height: 48px; background: rgba(224,123,57,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+  .contact-card h4 { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey); margin-bottom: 4px; }
+  .contact-card p, .contact-card a { font-size: 0.95rem; font-weight: 600; color: var(--dark); }
+  .contact-card a:hover { color: var(--orange); }
+
+  .contact-body { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .form-tabs { display: flex; border: 1.5px solid var(--border); border-radius: 50px; padding: 4px; margin-bottom: 32px; background: var(--bg); }
+  .tab-btn { flex: 1; padding: 10px 20px; border: none; background: none; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: var(--transition); color: var(--grey); }
+  .tab-btn.active { background: var(--white); color: var(--orange); box-shadow: 0 2px 8px rgba(0,0,0,0.08); font-weight: 600; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 10px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.92rem; color: var(--dark);
+    background: var(--bg); transition: var(--transition); outline: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--orange); background: var(--white); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .map-wrap { border-radius: var(--radius); overflow: hidden; height: 100%; min-height: 400px; }
+  .map-wrap iframe { width: 100%; height: 100%; border: none; min-height: 400px; }
+
+  /* TOAST */
+  .toast { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--dark); color: var(--white); padding: 16px 28px; border-radius: 50px; font-size: 0.92rem; font-weight: 500; z-index: 3000; opacity: 0; transition: all 0.4s ease; pointer-events: none; display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .toast::before { content: '✓'; width: 24px; height: 24px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; }
+
+  /* FLOATING WA */
+  .wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 999; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.5); transition: var(--transition); }
+  .wa-float:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.6); }
+  .wa-float svg { width: 28px; height: 28px; fill: white; }
+  .wa-pulse { position: absolute; inset: 0; border-radius: 50%; background: rgba(37,211,102,0.4); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%{transform:scale(1);opacity:0.7;} 100%{transform:scale(1.8);opacity:0;} }
+
+  /* FOOTER */
+  footer { background: var(--dark); color: var(--white); padding: 64px 0 28px; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; margin-bottom: 48px; }
+  .footer-logo .logo-text .name { color: var(--white); font-size: 1.1rem; }
+  .footer-tagline { font-size: 0.9rem; color: rgba(255,255,255,0.55); margin-top: 12px; line-height: 1.6; max-width: 280px; }
+  .footer-social { display: flex; gap: 12px; margin-top: 20px; }
+  .social-btn { width: 38px; height: 38px; background: rgba(255,255,255,0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; transition: var(--transition); font-size: 0.9rem; }
+  .social-btn:hover { background: var(--orange); transform: translateY(-2px); }
+  .footer-col h5 { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 18px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a { font-size: 0.9rem; color: rgba(255,255,255,0.65); transition: var(--transition); }
+  .footer-col ul li a:hover { color: var(--orange); }
+  .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 0.88rem; color: rgba(255,255,255,0.65); }
+  .footer-contact-item span:first-child { color: var(--orange); font-size: 1rem; flex-shrink: 0; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: gap; gap: 12px; }
+  .footer-bottom p { font-size: 0.83rem; color: rgba(255,255,255,0.35); }
+
+  /* RESPONSIVE */
+  @media(max-width:1024px) {
+    .about-intro, .service-detail-inner { grid-template-columns: 1fr; gap: 40px; }
+    .service-detail-inner.reverse { direction: ltr; }
+    .service-detail-img img { height: 280px; }
+    .contact-body { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .process-steps::before { display: none; }
+    .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    .lightbox-prev { left: -44px; }
+    .lightbox-next { right: -44px; }
+  }
+  @media(max-width:768px) {
+    nav { display: none; }
+    .header-cta .btn { display: inline-flex; padding: 7px 14px; font-size: 0.8rem; }
+    .hamburger { display: flex; }
+    .mobile-nav { display: flex; }
+    .hero h1 { font-size: 2.2rem; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .mv-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-item img, .gallery-item:nth-child(3n+1) img { height: 200px; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .lightbox-prev { left: 8px; }
+    .lightbox-next { right: 8px; }
+    .process-section { padding: 40px 24px; }
+    .section { padding: 64px 0; }
+  }
+
+  /* Mobile and usability repairs */
+  @media(max-width:600px) {
+    .form-row { grid-template-columns: 1fr; gap: 12px; }
+    .hero-btns { flex-direction: column; width: 100%; }
+    .hero-btns .btn { width: 100%; justify-content: center; }
+    .contact-card { padding: 24px 18px; }
+    .hero { padding: 110px 0 60px; }
+  }
+  .service-cta-btn {
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 18px;
+    padding: 10px 20px; font-size: 0.88rem; font-weight: 600;
+    color: var(--orange); background: rgba(224,123,57,0.1); border: 1px solid rgba(224,123,57,0.3);
+    border-radius: 50px; cursor: pointer; transition: var(--transition);
+  }
+  .service-cta-btn:hover {
+    background: var(--orange); color: var(--white);
+  }
+  .lead-success-card {
+    background: #f0fdf4; border: 1px solid #86efac; border-radius: var(--radius);
+    padding: 20px; margin-top: 20px; text-align: center; display: none;
+  }
+  .lead-success-card.active { display: block; animation: fadeIn 0.3s ease; }
+  .lead-success-title { color: #166534; font-weight: 700; font-size: 1.1rem; margin-bottom: 6px; }
+  .lead-success-desc { color: #15803d; font-size: 0.92rem; line-height: 1.5; margin-bottom: 14px; }
+  .btn-whatsapp-lead {
+    display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: #fff;
+    padding: 12px 24px; border-radius: 50px; font-weight: 600; font-size: 0.92rem;
+    transition: var(--transition);
+  }
+  .btn-whatsapp-lead:hover { background: #1eb857; color: #fff; transform: translateY(-2px); }
+  @keyframes fadeIn { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: translateY(0); } }
+
+
+  /* Responsive map, gallery, and lightbox enhancements */
+  @media(max-width:768px) {
+    .map-wrap, .map-wrap iframe { min-height: 280px !important; height: 280px !important; }
+    .lightbox-close { top: 12px; right: 12px; position: fixed; z-index: 2020; background: rgba(255,255,255,0.95); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+    .lightbox-nav { background: rgba(0,0,0,0.65); width: 42px; height: 42px; }
+  }
+  @media(max-width:480px) {
+    .gallery-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
+    .gallery-item img, .gallery-item:nth-child(3n+1) img { height: 220px !important; }
+    .lightbox-prev { left: 4px; }
+    .lightbox-next { right: 4px; }
+  }
+  .lead-fallback-actions {
+    display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 12px;
+  }
+  .btn-fallback-call {
+    display: inline-flex; align-items: center; gap: 6px; background: var(--dark); color: #fff;
+    padding: 10px 18px; border-radius: 50px; font-weight: 600; font-size: 0.88rem; transition: var(--transition);
+  }
+  .btn-fallback-call:hover { background: #333; color: #fff; }
+  .btn-fallback-email {
+    display: inline-flex; align-items: center; gap: 6px; background: transparent; border: 1px solid var(--border); color: var(--dark);
+    padding: 10px 18px; border-radius: 50px; font-weight: 600; font-size: 0.88rem; transition: var(--transition);
+  }
+  .btn-fallback-email:hover { background: rgba(0,0,0,0.05); }
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="container">
+    <div class="header-inner">
+      <div class="logo" onclick="showPage('home')">
+        <div class="logo-grid">
+          <span class="q1"></span><span class="q2"></span>
+          <span class="q3"></span><span class="q4"></span>
+        </div>
+        <div class="logo-text">
+          <div class="name">JANGID FURNITURE STUDIO</div>
+          <div class="tagline-small">Custom Wood, PVC, Aluminium & Glass Works</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#" class="nav-link active" data-page="home">Home</a>
+        <a href="#" class="nav-link" data-page="about">About</a>
+        <a href="#" class="nav-link" data-page="services">Services</a>
+        <a href="#" class="nav-link" data-page="gallery">Gallery</a>
+        <a href="#" class="nav-link" data-page="contact">Contact</a>
+      </nav>
+      <div class="header-cta">
+        <button class="btn btn-primary" onclick="showPage('contact', 'quote')">Get Quote</button>
+        <div class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE NAV OVERLAY -->
+<div class="mobile-nav-overlay" id="navOverlay"></div>
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="#" class="nav-link" data-page="home">🏠 Home</a>
+  <a href="#" class="nav-link" data-page="about">📖 About Us</a>
+  <a href="#" class="nav-link" data-page="services">🛠 Services</a>
+  <a href="#" class="nav-link" data-page="gallery">🖼 Gallery</a>
+  <a href="#" class="nav-link" data-page="contact">📞 Contact</a>
+  <div style="margin-top:auto;padding-top:20px;display:flex;flex-direction:column;gap:10px">
+    <button class="btn btn-primary" onclick="showPage('contact', 'quote');closeMobileNav();" style="width:100%;justify-content:center">💬 Get a Quote</button>
+    <a href="https://wa.me/919714461172?text=Hi%20Jangid%20Furniture%20Studio%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width:100%;justify-content:center">💬 WhatsApp Us</a>
+  </div>
+</div>
+
+<!-- ================= HOME PAGE ================= -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">✦ Ahmedabad's Trusted Studio</div>
+        <h1>Crafting Spaces That Tell<br><em>Your Story</em></h1>
+        <p>Premium modular furniture & interior solutions in Ahmedabad. From modular kitchens to glass partitions — we build spaces that inspire.</p>
+        <div class="hero-btns">
+          <button class="btn btn-primary" onclick="showPage('gallery')">Explore Our Work →</button>
+          <button class="btn btn-outline" onclick="showPage('contact', 'visit')">Get Free Site Visit</button>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-dot"></div>
+      scroll
+    </div>
+  </section>
+
+  <!-- SERVICES PREVIEW -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="label">What We Do</span>
+        <h2 class="section-title">Our Core Services</h2>
+        <p class="section-sub">From modular kitchens to aluminium partitions, we deliver end-to-end furniture and interior solutions crafted with precision.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card fade-up" onclick="showPage('services')">
+          <div class="service-icon">🍳</div>
+          <h3>Modular Kitchen</h3>
+          <p>Custom L-shape, U-shape, and parallel kitchens with premium finish and functional storage.</p>
+          <div class="service-arrow">Know more →</div>
+        </div>
+        <div class="service-card fade-up" onclick="showPage('services')">
+          <div class="service-icon">🚪</div>
+          <h3>Wardrobes & Storage</h3>
+          <p>Floor-to-ceiling wardrobes, walk-in closets and custom storage solutions tailored to your space.</p>
+          <div class="service-arrow">Know more →</div>
+        </div>
+        <div class="service-card fade-up" onclick="showPage('services')">
+          <div class="service-icon">🪟</div>
+          <h3>Aluminium & Glass Partitions</h3>
+          <p>Modern office dividers, glass cabin work, and partition systems using premium profiles.</p>
+          <div class="service-arrow">Know more →</div>
+        </div>
+        <div class="service-card fade-up" onclick="showPage('services')">
+          <div class="service-icon">🪑</div>
+          <h3>Office & Showroom Furniture</h3>
+          <p>Custom workstations, reception desks, and showroom display furniture for commercial spaces.</p>
+          <div class="service-arrow">Know more →</div>
+        </div>
+        <div class="service-card fade-up" onclick="showPage('services')">
+          <div class="service-icon">🧱</div>
+          <h3>PVC Cabinets & Panels</h3>
+          <p>Waterproof PVC-based cabinets, bathroom vanity, and wall panels with clean finishes.</p>
+          <div class="service-arrow">Know more →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="section why-section">
+    <div class="container">
+      <div class="section-header fade-up" style="text-align:center">
+        <span class="label" style="color:var(--orange-light)">Why Jangid Studio</span>
+        <h2 class="section-title" style="color:var(--white)">Built on Trust & Craftsmanship</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-item fade-up">
+          <div class="why-icon">🏆</div>
+          <h4>Quality Craftsmanship</h4>
+          <p>Precision woodwork with premium grade materials</p>
+        </div>
+        <div class="why-item fade-up">
+          <div class="why-icon">👷</div>
+          <h4>Expert Team</h4>
+          <p>Skilled carpenters and designers with 10+ years experience</p>
+        </div>
+        <div class="why-item fade-up">
+          <div class="why-icon">⏱</div>
+          <h4>Timely Delivery</h4>
+          <p>We commit to deadlines and deliver on schedule</p>
+        </div>
+        <div class="why-item fade-up">
+          <div class="why-icon">🛡</div>
+          <h4>Warranty Support</h4>
+          <p>Post-installation warranty and dedicated after-sales service</p>
+        </div>
+        <div class="why-item fade-up">
+          <div class="why-icon">💰</div>
+          <h4>Affordable Pricing</h4>
+          <p>Competitive pricing without compromising on quality</p>
+        </div>
+        <div class="why-item fade-up">
+          <div class="why-icon">🏠</div>
+          <h4>Free Site Visit</h4>
+          <p>Complimentary consultation and site measurement</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="fade-up"><div class="stat-num" data-count="10">0</div><div class="stat-label">Years of Experience</div></div>
+        <div class="fade-up"><div class="stat-num" data-count="500">0</div><div class="stat-label">Projects Completed</div></div>
+        <div class="fade-up"><div class="stat-num" data-count="450">0</div><div class="stat-label">Happy Clients</div></div>
+        <div class="fade-up"><div class="stat-num" data-count="5">0</div><div class="stat-label">Star Rated Studio</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="label">Client Stories</span>
+        <h2 class="section-title">What Our Clients Say</h2>
+        <p class="section-sub">Real feedback from real homeowners and business owners across Ahmedabad.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-up">
+          <div class="stars">★★★★★</div>
+          <p>"Ashutosh bhai and his team did an incredible job with our modular kitchen in Satellite. The quality of finish is exceptional and they delivered exactly on time. Very professional and helpful throughout."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">PD</div>
+            <div class="author-info">
+              <div class="name">Priya Desai</div>
+              <div class="loc">Satellite, Ahmedabad</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-up">
+          <div class="stars">★★★★★</div>
+          <p>"We got our entire office done by Jangid Furniture Studio — glass partitions, workstations, reception area. The aluminium work is top notch and it transformed our space completely. Highly recommend!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">RV</div>
+            <div class="author-info">
+              <div class="name">Rahul Vyas</div>
+              <div class="loc">SG Highway, Ahmedabad</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-up">
+          <div class="stars">★★★★★</div>
+          <p>"The wardrobe they built for our bedroom is simply stunning. Great use of space, smooth shutters, and the PVC finish looks premium even after 2 years. Best decision we made during our renovation."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">NK</div>
+            <div class="author-info">
+              <div class="name">Neha Kulkarni</div>
+              <div class="loc">Bodakdev, Ahmedabad</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <div class="container" style="position:relative;z-index:1">
+      <h2>Ready to Transform<br>Your Space?</h2>
+      <p>Let's bring your vision to life. Get a free site visit and consultation today.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+        <a href="https://wa.me/919714461172?text=Hi%20Jangid%20Furniture%20Studio%2C%20I%20want%20to%20chat%20about%20furniture%20services." target="_blank" rel="noopener noreferrer" class="btn whatsapp-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.097.544 4.068 1.496 5.78L0 24l6.363-1.467A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.787 0-3.466-.467-4.927-1.285l-.354-.209-3.678.848.877-3.578-.229-.368A9.982 9.982 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          Chat on WhatsApp
+        </a>
+        <button class="btn btn-outline" onclick="showPage('contact', 'visit')" style="border-color:rgba(255,255,255,0.4)">Book Free Site Visit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ABOUT PAGE ================= -->
+<div id="page-about" class="page">
+  <div style="padding-top:80px">
+
+    <!-- ABOUT HERO -->
+    <div style="background:linear-gradient(135deg,var(--dark) 0%,#2d1f0e 100%);padding:64px 0;color:var(--white)">
+      <div class="container">
+        <span class="label" style="color:var(--orange-light)">Who We Are</span>
+        <h1 class="section-title" style="color:var(--white);margin-top:8px">Crafting Excellence Since 2014</h1>
+      </div>
+    </div>
+
+    <!-- STORY -->
+    <section class="section">
+      <div class="container">
+        <div class="about-intro">
+          <div class="about-img fade-up">
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80" alt="Furniture craftsmanship">
+          </div>
+          <div class="about-text fade-up">
+            <span class="about-label">Our Story</span>
+            <h2>A Decade of Transforming Ahmedabad's Spaces</h2>
+            <p>Founded in 2014 by Ashutosh Jangid, Jangid Furniture Studio began with a simple belief — that every home and workspace deserves furniture that is both beautiful and built to last. What started as a small workshop in Ahmedabad has grown into a trusted name across Gujarat.</p>
+            <p>Over the past decade, we have completed 500+ projects ranging from modular kitchens in residential homes to full office buildouts for corporate clients. Our commitment to quality materials, honest pricing, and timely delivery has earned us the loyalty of over 450 happy clients.</p>
+            <p>We specialize in custom wood, PVC, aluminium, and glass works — handling everything from design consultation to final installation under one roof.</p>
+            <div class="about-badges">
+              <span class="badge">Est. 2014</span>
+              <span class="badge">Ahmedabad Based</span>
+              <span class="badge">500+ Projects</span>
+              <span class="badge">Fully Custom Work</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats-bar">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="fade-up"><div class="stat-num" data-count="10">0</div><div class="stat-label">Years Experience</div></div>
+          <div class="fade-up"><div class="stat-num" data-count="500">0</div><div class="stat-label">Projects</div></div>
+          <div class="fade-up"><div class="stat-num" data-count="450">0</div><div class="stat-label">Clients</div></div>
+          <div class="fade-up"><div class="stat-num" data-count="100">0</div><div class="stat-label">% Satisfaction</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MISSION & VISION -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header fade-up">
+          <span class="label">Our Purpose</span>
+          <h2 class="section-title">Mission & Vision</h2>
+        </div>
+        <div class="mv-grid">
+          <div class="mv-card mission fade-up">
+            <h3>Our Mission</h3>
+            <p>To deliver premium quality, custom-crafted furniture and interior solutions that transform everyday spaces into inspiring environments — while building lasting relationships through trust, transparency, and timely service.</p>
+          </div>
+          <div class="mv-card vision fade-up">
+            <h3>Our Vision</h3>
+            <p>To become Gujarat's most trusted name in modular furniture and interior fitouts — known not just for what we build, but for how we make our clients feel throughout the entire journey, from first visit to final handover.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE VALUES -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-header fade-up">
+          <span class="label">What Drives Us</span>
+          <h2 class="section-title">Our Core Values</h2>
+        </div>
+        <div class="values-list">
+          <div class="value-item fade-up">Quality First</div>
+          <div class="value-item fade-up">Client Trust</div>
+          <div class="value-item fade-up">Continuous Innovation</div>
+          <div class="value-item fade-up">Punctuality</div>
+          <div class="value-item fade-up">Full Transparency</div>
+          <div class="value-item fade-up">After-Sales Care</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-header fade-up">
+          <span class="label">Behind the Studio</span>
+          <h2 class="section-title">Meet Our Team</h2>
+        </div>
+        <div class="team-grid">
+          <div class="team-card fade-up">
+            <div class="team-img">👨‍💼</div>
+            <div class="team-info">
+              <h4>Ashutosh Jangid</h4>
+              <div class="role">Founder & Director</div>
+              <p>With over 10 years in the furniture industry, Ashutosh leads every project with passion, precision, and a deep understanding of client needs.</p>
+            </div>
+          </div>
+          <div class="team-card fade-up">
+            <div class="team-img">👨‍🎨</div>
+            <div class="team-info">
+              <h4>Deepak Sharma</h4>
+              <div class="role">Lead Interior Designer</div>
+              <p>Deepak brings spaces to life with thoughtful design, balancing aesthetics and functionality to create interiors that truly resonate.</p>
+            </div>
+          </div>
+          <div class="team-card fade-up">
+            <div class="team-img">👷</div>
+            <div class="team-info">
+              <h4>Mahesh Patel</h4>
+              <div class="role">Site Manager</div>
+              <p>Mahesh oversees every installation on-site, ensuring quality standards are upheld and every detail is executed exactly as planned.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ================= SERVICES PAGE ================= -->
+<div id="page-services" class="page">
+  <div style="padding-top:80px">
+
+    <div style="background:linear-gradient(135deg,var(--dark) 0%,#2d1f0e 100%);padding:64px 0;color:var(--white)">
+      <div class="container">
+        <span class="label" style="color:var(--orange-light)">What We Offer</span>
+        <h1 class="section-title" style="color:var(--white);margin-top:8px">Our Services</h1>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+
+        <!-- Service 1: Modular Kitchen -->
+        <div class="service-detail">
+          <div class="service-detail-inner fade-up">
+            <div class="service-detail-img">
+              <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80" alt="Modular Kitchen">
+            </div>
+            <div class="service-detail-text">
+              <div class="srv-num">01</div>
+              <h3>Modular Kitchen</h3>
+              <p>We design and install custom modular kitchens that blend style with smart storage. Whether you need an L-shape, U-shape, parallel, or island kitchen, we tailor every unit to your exact space and lifestyle requirements.</p>
+              <ul class="feature-list">
+                <li>L-shape, U-shape, parallel & island layouts</li>
+                <li>High-quality shutters: matte, gloss, acrylic, membrane</li>
+                <li>Soft-close hinges and drawer channels</li>
+                <li>Custom countertop: granite, quartz, or laminate</li>
+                <li>Overhead units, base units & tall units</li>
+              </ul>
+              <button type="button" class="service-cta-btn" onclick="showPage('contact', 'quote', 'Modular Kitchen')">Request Modular Kitchen Quote →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 2: Wardrobes -->
+        <div class="service-detail">
+          <div class="service-detail-inner reverse fade-up">
+            <div class="service-detail-img">
+              <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&q=80" alt="Wardrobes">
+            </div>
+            <div class="service-detail-text">
+              <div class="srv-num">02</div>
+              <h3>Wardrobes & Storage</h3>
+              <p>Maximize your space with our fully customized wardrobe solutions. From compact bedroom wardrobes to spacious walk-in closets, every unit is designed to provide optimal storage while enhancing the room's aesthetics.</p>
+              <ul class="feature-list">
+                <li>Sliding, hinged & folding door systems</li>
+                <li>Internal fittings: drawers, pull-outs, tie racks</li>
+                <li>Loft units, study tables & TV panels</li>
+                <li>Premium laminate, veneer & PVC finishes</li>
+                <li>Floor-to-ceiling designs for maximum storage</li>
+              </ul>
+              <button type="button" class="service-cta-btn" onclick="showPage('contact', 'quote', 'Wardrobes & Storage')">Request Wardrobes & Storage Quote →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 3: Glass Partitions -->
+        <div class="service-detail">
+          <div class="service-detail-inner fade-up">
+            <div class="service-detail-img">
+              <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Glass Partitions">
+            </div>
+            <div class="service-detail-text">
+              <div class="srv-num">03</div>
+              <h3>Aluminium & Glass Partitions</h3>
+              <p>Transform open spaces into functional zones with our sleek aluminium and glass partition systems. Perfect for offices, showrooms, and commercial interiors seeking a modern, professional look.</p>
+              <ul class="feature-list">
+                <li>Full-height and mid-height glass partitions</li>
+                <li>Single & double-glazed systems</li>
+                <li>Aluminium framed and frameless glass options</li>
+                <li>Office cabins, conference room enclosures</li>
+                <li>Toughened safety glass with varied frosting options</li>
+              </ul>
+              <button type="button" class="service-cta-btn" onclick="showPage('contact', 'quote', 'Aluminium & Glass Partitions')">Request Aluminium & Glass Partitions Quote →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 4: Office Furniture -->
+        <div class="service-detail">
+          <div class="service-detail-inner reverse fade-up">
+            <div class="service-detail-img">
+              <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80" alt="Office Furniture">
+            </div>
+            <div class="service-detail-text">
+              <div class="srv-num">04</div>
+              <h3>Office & Showroom Furniture</h3>
+              <p>We create custom furniture solutions for offices, showrooms, clinics, and retail spaces. From executive desks to full workstation setups, every piece is crafted to support productivity and leave a lasting impression.</p>
+              <ul class="feature-list">
+                <li>Custom workstations and cluster seating</li>
+                <li>Reception desks and front office counters</li>
+                <li>Cabin furniture, director desks & credenzas</li>
+                <li>Retail display shelving & showroom fixtures</li>
+                <li>Conference tables and lounge furniture</li>
+              </ul>
+              <button type="button" class="service-cta-btn" onclick="showPage('contact', 'quote', 'Office & Showroom Furniture')">Request Office & Showroom Furniture Quote →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 5: PVC Cabinets -->
+        <div class="service-detail">
+          <div class="service-detail-inner fade-up">
+            <div class="service-detail-img">
+              <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80" alt="PVC Cabinets">
+            </div>
+            <div class="service-detail-text">
+              <div class="srv-num">05</div>
+              <h3>PVC Cabinets & Panels</h3>
+              <p>Our PVC-based cabinet and panel solutions offer 100% waterproof, termite-proof, and maintenance-free alternatives to traditional wood. Ideal for bathrooms, utility areas, and humid environments.</p>
+              <ul class="feature-list">
+                <li>100% waterproof & termite-proof construction</li>
+                <li>Bathroom vanity units and mirror cabinets</li>
+                <li>Utility room and balcony storage units</li>
+                <li>PVC wall panels with textured & glossy options</li>
+                <li>Easy to clean, long-lasting & eco-friendly</li>
+              </ul>
+              <button type="button" class="service-cta-btn" onclick="showPage('contact', 'quote', 'PVC Cabinets & Panels')">Request PVC Cabinets & Panels Quote →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- WORK PROCESS -->
+        <div class="process-section fade-up">
+          <div class="section-header" style="margin-bottom:48px;text-align:center">
+            <span class="label" style="color:var(--orange-light)">How We Work</span>
+            <h2 class="section-title" style="color:var(--white)">Our Simple Process</h2>
+          </div>
+          <div class="process-steps">
+            <div class="process-step">
+              <div class="step-num">1</div>
+              <h4>Free Consultation</h4>
+              <p>We visit your site, understand your requirements and take measurements</p>
+            </div>
+            <div class="process-step">
+              <div class="step-num">2</div>
+              <h4>Design & Quote</h4>
+              <p>Our team prepares a 3D design concept and a transparent cost estimate</p>
+            </div>
+            <div class="process-step">
+              <div class="step-num">3</div>
+              <h4>Manufacturing</h4>
+              <p>Your furniture is precision-crafted in our workshop using premium materials</p>
+            </div>
+            <div class="process-step">
+              <div class="step-num">4</div>
+              <h4>Installation</h4>
+              <p>Our skilled team installs everything on-site with a thorough quality check</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MATERIALS -->
+        <div class="materials-section fade-up">
+          <span class="label">What We Use</span>
+          <h3 style="font-size:1.4rem;margin-top:8px">Premium Materials</h3>
+          <p style="color:var(--grey);margin-top:8px;line-height:1.7">We source only the highest quality materials to ensure your furniture stands the test of time.</p>
+          <div class="materials-grid">
+            <span class="material-tag">BWR Boiling Water Resistant Plywood</span>
+            <span class="material-tag">MDF Board (High-density)</span>
+            <span class="material-tag">Aluminium Sections (ISI Marked)</span>
+            <span class="material-tag">Toughened Safety Glass</span>
+            <span class="material-tag">Premium PVC Foam Board</span>
+            <span class="material-tag">HDHMR Board</span>
+            <span class="material-tag">Hafele / Hettich Hardware</span>
+            <span class="material-tag">Laminate & Veneer Finishes</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ================= GALLERY PAGE ================= -->
+<div id="page-gallery" class="page">
+  <div style="padding-top:80px">
+
+    <div style="background:linear-gradient(135deg,var(--dark) 0%,#2d1f0e 100%);padding:64px 0;color:var(--white)">
+      <div class="container">
+        <span class="label" style="color:var(--orange-light)">Our Portfolio</span>
+        <h1 class="section-title" style="color:var(--white);margin-top:8px">Project Gallery</h1>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div class="gallery-filters fade-up">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="kitchen">Modular Kitchen</button>
+          <button class="filter-btn" data-filter="wardrobe">Wardrobes</button>
+          <button class="filter-btn" data-filter="office">Office Furniture</button>
+          <button class="filter-btn" data-filter="glass">Glass Partitions</button>
+          <button class="filter-btn" data-filter="living">Living Room</button>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Items injected by JS -->
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-nav lightbox-prev" id="lbPrev">‹</button>
+  <div class="lightbox-content">
+    <button class="lightbox-close" id="lbClose">✕</button>
+    <img src="" alt="" class="lightbox-img" id="lbImg">
+    <div class="lightbox-info">
+      <h4 id="lbTitle"></h4>
+      <span id="lbCat"></span>
+    </div>
+  </div>
+  <button class="lightbox-nav lightbox-next" id="lbNext">›</button>
+</div>
+
+<!-- ================= CONTACT PAGE ================= -->
+<div id="page-contact" class="page">
+  <div style="padding-top:80px">
+
+    <div style="background:linear-gradient(135deg,var(--dark) 0%,#2d1f0e 100%);padding:64px 0;color:var(--white)">
+      <div class="container">
+        <span class="label" style="color:var(--orange-light)">Reach Us</span>
+        <h1 class="section-title" style="color:var(--white);margin-top:8px">Get in Touch</h1>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+
+        <!-- CONTACT INFO CARDS -->
+        <div class="contact-info-grid fade-up">
+          <div class="contact-card">
+            <div class="contact-icon">📞</div>
+            <div>
+              <h4>Phone / WhatsApp</h4>
+              <a href="tel:+919714461172">+91 97144 61172</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">📧</div>
+            <div>
+              <h4>Email Address</h4>
+              <a href="mailto:jangidfurniturestudio@gmail.com">jangidfurniturestudio@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">📍</div>
+            <div>
+              <h4>Location</h4>
+              <p>Ahmedabad, Gujarat, India</p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <h4>Business Hours</h4>
+              <p>Mon – Sat: 9 AM – 7 PM</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORMS + MAP -->
+        <div class="contact-body">
+          <div class="fade-up">
+            <div class="form-tabs">
+              <button class="tab-btn active" data-tab="visit">📅 Book Free Site Visit</button>
+              <button class="tab-btn" data-tab="quote">💬 Get a Quote</button>
+            </div>
+
+            <!-- SITE VISIT FORM -->
+            <div class="tab-content active" id="tab-visit">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Your Name *</label>
+                  <input type="text" id="v-name" placeholder="Ramesh Shah">
+                </div>
+                <div class="form-group">
+                  <label>Phone Number *</label>
+                  <input type="tel" id="v-phone" placeholder="+91 98765 43210">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>City / Area *</label>
+                  <input type="text" id="v-city" placeholder="Satellite, Ahmedabad">
+                </div>
+                <div class="form-group">
+                  <label>Preferred Date</label>
+                  <input type="date" id="v-date">
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Message / Requirements</label>
+                <textarea id="v-msg" placeholder="Brief description of your project..."></textarea>
+              </div>
+              <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="submitForm('visit')">Book Free Site Visit →</button>
+
+              <div id="v-success" class="lead-success-card">
+                <div class="lead-success-title" id="v-success-title">✓ Request Received!</div>
+                <div class="lead-success-desc" id="v-success-msg">Your site visit request is ready.</div>
+                <div class="lead-fallback-actions">
+                  <a id="v-wa-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-lead">💬 Send on WhatsApp</a>
+                  <a href="tel:+919714461172" class="btn-fallback-call">📞 Call Now</a>
+                  <a id="v-mail-link" href="mailto:jangidfurniturestudio@gmail.com" class="btn-fallback-email">📧 Email</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- QUOTE FORM -->
+            <div class="tab-content" id="tab-quote">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Your Name *</label>
+                  <input type="text" id="q-name" placeholder="Priya Patel">
+                </div>
+                <div class="form-group">
+                  <label>Phone Number *</label>
+                  <input type="tel" id="q-phone" placeholder="+91 98765 43210">
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" id="q-email" placeholder="your@email.com">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Service Required *</label>
+                  <select id="q-service">
+                    <option value="">Select a service...</option>
+                    <option>Modular Kitchen</option>
+                    <option>Wardrobes & Storage</option>
+                    <option>Aluminium & Glass Partitions</option>
+                    <option>Office & Showroom Furniture</option>
+                    <option>PVC Cabinets & Panels</option>
+                    <option>Full Home Interior</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Budget Range</label>
+                  <select id="q-budget">
+                    <option value="">Select range...</option>
+                    <option>Under ₹50,000</option>
+                    <option>₹50,000 – ₹1,00,000</option>
+                    <option>₹1,00,000 – ₹3,00,000</option>
+                    <option>₹3,00,000 – ₹5,00,000</option>
+                    <option>Above ₹5,00,000</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Project Details *</label>
+                <textarea id="q-details" placeholder="Describe your project — size, requirements, timeline..."></textarea>
+              </div>
+              <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="submitForm('quote')">Send Quote Request →</button>
+
+              <div id="q-success" class="lead-success-card">
+                <div class="lead-success-title" id="q-success-title">✓ Request Received!</div>
+                <div class="lead-success-desc" id="q-success-msg">Your quotation request is ready.</div>
+                <div class="lead-fallback-actions">
+                  <a id="q-wa-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-lead">💬 Send on WhatsApp</a>
+                  <a href="tel:+919714461172" class="btn-fallback-call">📞 Call Now</a>
+                  <a id="q-mail-link" href="mailto:jangidfurniturestudio@gmail.com" class="btn-fallback-email">📧 Email</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MAP -->
+          <div class="map-wrap fade-up">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235013.6479598375!2d72.41492254354115!3d23.020490480462955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1699000000000!5m2!1sen!2sin"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ahmedabad Map">
+            </iframe>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo logo">
+          <div class="logo-grid">
+            <span class="q1"></span><span class="q2"></span>
+            <span class="q3"></span><span class="q4"></span>
+          </div>
+          <div class="logo-text">
+            <div class="name">JANGID FURNITURE STUDIO</div>
+            <div class="tagline-small" style="color:rgba(255,255,255,0.4)">Transforming Spaces, Crafting Excellence</div>
+          </div>
+        </div>
+        <p class="footer-tagline">Premium custom furniture and interior solutions crafted with precision and care in Ahmedabad, Gujarat.</p>
+        <div class="footer-social">
+          <a href="https://wa.me/919714461172?text=Hi%20Jangid%20Furniture%20Studio%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." target="_blank" rel="noopener noreferrer" class="social-btn" title="Chat on WhatsApp">💬</a>
+          <a href="tel:+919714461172" class="social-btn" title="Call Us Directly">📞</a>
+          <a href="mailto:jangidfurniturestudio@gmail.com" class="social-btn" title="Send Email">📧</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#" onclick="showPage('home')">Home</a></li>
+          <li><a href="#" onclick="showPage('about')">About Us</a></li>
+          <li><a href="#" onclick="showPage('services')">Services</a></li>
+          <li><a href="#" onclick="showPage('gallery')">Gallery</a></li>
+          <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#" onclick="showPage('services')">Modular Kitchen</a></li>
+          <li><a href="#" onclick="showPage('services')">Wardrobes & Storage</a></li>
+          <li><a href="#" onclick="showPage('services')">Glass Partitions</a></li>
+          <li><a href="#" onclick="showPage('services')">Office Furniture</a></li>
+          <li><a href="#" onclick="showPage('services')">PVC Cabinets</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact Info</h5>
+        <div class="footer-contact-item"><span>📞</span><span><a href="tel:+919714461172" style="color:rgba(255,255,255,0.65)">+91 97144 61172</a></span></div>
+        <div class="footer-contact-item"><span>📧</span><span><a href="mailto:jangidfurniturestudio@gmail.com" style="color:rgba(255,255,255,0.65);font-size:0.82rem">jangidfurniturestudio@gmail.com</a></span></div>
+        <div class="footer-contact-item"><span>📍</span><span>Ahmedabad, Gujarat, India</span></div>
+        <div class="footer-contact-item"><span>🕐</span><span>Mon–Sat: 9 AM – 7 PM</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Jangid Furniture Studio. All Rights Reserved.</p>
+      <p>Custom Wood, PVC, Aluminium & Glass Works</p>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/919714461172?text=Hi%20Jangid%20Furniture%20Studio%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." target="_blank" rel="noopener noreferrer" class="wa-float" title="Chat on WhatsApp">
+  <div class="wa-pulse"></div>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.097.544 4.068 1.496 5.78L0 24l6.363-1.467A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.787 0-3.466-.467-4.927-1.285l-.354-.209-3.678.848.877-3.578-.229-.368A9.982 9.982 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+
+<!-- TOAST -->
+<div class="toast" id="toast">We'll contact you within 24 hours!</div>
+
+<script>
+// ===================== GALLERY DATA =====================
+const galleryData = [
+  { src:'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80', title:'Modern L-Shape Kitchen – Satellite, Ahmedabad', cat:'kitchen', catLabel:'Modular Kitchen' },
+  { src:'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600&q=80', title:'Contemporary White Kitchen – Bopal', cat:'kitchen', catLabel:'Modular Kitchen' },
+  { src:'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=600&q=80', title:'Full-Height Sliding Wardrobe – Bodakdev', cat:'wardrobe', catLabel:'Wardrobes' },
+  { src:'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&q=80', title:'Walk-in Closet Setup – SG Highway Villa', cat:'wardrobe', catLabel:'Wardrobes' },
+  { src:'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80', title:'Open-Plan Office Glass Cabin – Prahladnagar', cat:'glass', catLabel:'Glass Partitions' },
+  { src:'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&q=80', title:'Corporate Office Workstations – Navrangpura', cat:'office', catLabel:'Office Furniture' },
+  { src:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80', title:'Premium Living Room Setup – Thaltej', cat:'living', catLabel:'Living Room' },
+  { src:'https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600&q=80', title:'Minimalist Bedroom Interior – Gota', cat:'living', catLabel:'Living Room' },
+  { src:'https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=600&q=80', title:'Parallel Modular Kitchen – Chandkheda', cat:'kitchen', catLabel:'Modular Kitchen' },
+  { src:'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=80', title:'Reception Counter Design – Vastrapur Clinic', cat:'office', catLabel:'Office Furniture' },
+  { src:'https://images.unsplash.com/photo-1562184647-8ce78a3c5a0e?w=600&q=80', title:'Swing Door Wardrobe with Loft – Maninagar', cat:'wardrobe', catLabel:'Wardrobes' },
+  { src:'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=600&q=80', title:'Glass Partition & Cabin Work – Iscon', cat:'glass', catLabel:'Glass Partitions' },
+];
+
+let currentFilter = 'all';
+let lightboxIndex = 0;
+let filteredItems = [...galleryData];
+
+function renderGallery(filter) {
+  filteredItems = filter === 'all' ? galleryData : galleryData.filter(i => i.cat === filter);
+  const grid = document.getElementById('galleryGrid');
+  grid.innerHTML = filteredItems.map((item, i) => `
+    <div class="gallery-item" data-index="${i}" style="animation-delay:${i*0.05}s">
+      <img src="${item.src}" alt="${item.title}" loading="lazy">
+      <div class="gallery-overlay">
+        <div>
+          <div class="proj-title">${item.title}</div>
+          <div class="proj-cat">${item.catLabel}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  grid.querySelectorAll('.gallery-item').forEach(el => {
+    el.addEventListener('click', () => openLightbox(parseInt(el.dataset.index)));
+  });
+}
+
+function openLightbox(index) {
+  lightboxIndex = index;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function updateLightbox() {
+  const item = filteredItems[lightboxIndex];
+  document.getElementById('lbImg').src = item.src;
+  document.getElementById('lbTitle').textContent = item.title;
+  document.getElementById('lbCat').textContent = item.catLabel;
+}
+
+document.getElementById('lbClose').addEventListener('click', () => {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+});
+document.getElementById('lightbox').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('lightbox')) {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+document.getElementById('lbPrev').addEventListener('click', () => {
+  lightboxIndex = (lightboxIndex - 1 + filteredItems.length) % filteredItems.length;
+  updateLightbox();
+});
+document.getElementById('lbNext').addEventListener('click', () => {
+  lightboxIndex = (lightboxIndex + 1) % filteredItems.length;
+  updateLightbox();
+});
+document.addEventListener('keydown', (e) => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'ArrowLeft') { lightboxIndex = (lightboxIndex-1+filteredItems.length)%filteredItems.length; updateLightbox(); }
+  if (e.key === 'ArrowRight') { lightboxIndex = (lightboxIndex+1)%filteredItems.length; updateLightbox(); }
+  if (e.key === 'Escape') { document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow = ''; }
+});
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    renderGallery(currentFilter);
+  });
+});
+
+renderGallery('all');
+
+
+// ===================== JFS-OS API & LEAD CAPTURE CONFIG =====================
+const JFS_CONFIG = {
+  // Production JFS-OS backend endpoint for direct CRM lead ingestion
+  apiUrl: window.location.hostname.includes('jfs-os') || window.location.hostname === 'localhost'
+    ? '/api/leads'
+    : 'https://jfs-os.vercel.app/api/leads',
+  whatsappNumber: '919714461172',
+  businessName: 'Jangid Furniture Studio',
+  ownerEmail: 'jangidfurniturestudio@gmail.com'
+};
+
+// ===================== PAGE ROUTING & TAB NAVIGATION =====================
+function showPage(name, tab, prefillService) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const targetPage = document.getElementById('page-' + name);
+  if (targetPage) targetPage.classList.add('active');
+  
+  document.querySelectorAll('.nav-link').forEach(a => {
+    a.classList.toggle('active', a.dataset.page === name);
+  });
+  
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  closeMobileNav();
+
+  if (name === 'contact') {
+    if (tab) switchTab(tab);
+    if (prefillService) {
+      const srvEl = document.getElementById('q-service');
+      if (srvEl) srvEl.value = prefillService;
+    }
+  }
+
+  if (name === 'gallery') renderGallery(currentFilter);
+  setTimeout(initFadeUps, 100);
+  if (name === 'about' || name === 'home') setTimeout(animateCounters, 400);
+}
+
+function switchTab(tabName) {
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.tab === tabName);
+  });
+  document.querySelectorAll('.tab-content').forEach(t => {
+    t.classList.toggle('active', t.id === 'tab-' + tabName);
+  });
+  // Hide success messages when switching tabs
+  const vs = document.getElementById('v-success');
+  const qs = document.getElementById('q-success');
+  if (vs) vs.classList.remove('active');
+  if (qs) qs.classList.remove('active');
+}
+
+document.querySelectorAll('.nav-link').forEach(a => {
+  a.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (a.dataset.page) {
+      showPage(a.dataset.page);
+    }
+  });
+});
+
+// ===================== MOBILE NAV =====================
+function closeMobileNav() {
+  const nav = document.getElementById('mobileNav');
+  const overlay = document.getElementById('navOverlay');
+  if (nav) nav.classList.remove('open');
+  if (overlay) overlay.classList.remove('open');
+}
+const hamburger = document.getElementById('hamburger');
+if (hamburger) {
+  hamburger.addEventListener('click', () => {
+    document.getElementById('mobileNav').classList.add('open');
+    document.getElementById('navOverlay').classList.add('open');
+  });
+}
+const mobileClose = document.getElementById('mobileClose');
+if (mobileClose) mobileClose.addEventListener('click', closeMobileNav);
+const navOverlay = document.getElementById('navOverlay');
+if (navOverlay) navOverlay.addEventListener('click', closeMobileNav);
+
+// ===================== STICKY HEADER =====================
+window.addEventListener('scroll', () => {
+  const header = document.getElementById('header');
+  if (header) header.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ===================== FORM TABS =====================
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    switchTab(btn.dataset.tab);
+  });
+});
+
+// ===================== LEAD CAPTURE & SUBMISSION =====================
+async function submitForm(type) {
+  const isVisit = type === 'visit';
+  const nameEl = document.getElementById(isVisit ? 'v-name' : 'q-name');
+  const phoneEl = document.getElementById(isVisit ? 'v-phone' : 'q-phone');
+  const cityEl = isVisit ? document.getElementById('v-city') : null;
+  const dateEl = isVisit ? document.getElementById('v-date') : null;
+  const msgEl = isVisit ? document.getElementById('v-msg') : null;
+
+  const emailEl = !isVisit ? document.getElementById('q-email') : null;
+  const srvEl = !isVisit ? document.getElementById('q-service') : null;
+  const budgetEl = !isVisit ? document.getElementById('q-budget') : null;
+  const detailsEl = !isVisit ? document.getElementById('q-details') : null;
+
+  const successCard = document.getElementById(isVisit ? 'v-success' : 'q-success');
+  const successTitle = document.getElementById(isVisit ? 'v-success-title' : 'q-success-title');
+  const successMsg = document.getElementById(isVisit ? 'v-success-msg' : 'q-success-msg');
+  const waLink = document.getElementById(isVisit ? 'v-wa-link' : 'q-wa-link');
+  const mailLink = document.getElementById(isVisit ? 'v-mail-link' : 'q-mail-link');
+
+  // Robust validation
+  const name = nameEl.value.trim();
+  if (name.length < 2) {
+    highlightError(nameEl);
+    showToast('Please enter your full name (minimum 2 characters).');
+    return;
+  }
+
+  const rawPhone = phoneEl.value.replace(/[^0-9]/g, '');
+  // Indian phone validation: 10 digits, or 12 digits starting with 91
+  let cleanPhone = rawPhone;
+  if (rawPhone.length === 12 && rawPhone.startsWith('91')) {
+    cleanPhone = rawPhone.slice(2);
+  }
+  if (!cleanPhone || cleanPhone.length !== 10 || !/^[6-9]\d{9}$/.test(cleanPhone)) {
+    highlightError(phoneEl);
+    showToast('Please enter a valid 10-digit Indian mobile number (e.g. 98250 12345).');
+    return;
+  }
+
+  let service = '';
+  let cityArea = '';
+  let notes = '';
+
+  if (isVisit) {
+    cityArea = cityEl ? cityEl.value.trim() : '';
+    if (cityArea.length < 3) {
+      highlightError(cityEl);
+      showToast('Please specify your area in Ahmedabad (e.g. Satellite, Bopal, Bodakdev).');
+      return;
+    }
+    service = 'Free Site Visit';
+    notes = (msgEl ? msgEl.value.trim() : '') + (dateEl && dateEl.value ? (' | Preferred Date: ' + dateEl.value) : '');
+  } else {
+    service = srvEl ? srvEl.value : '';
+    if (!service) {
+      highlightError(srvEl);
+      showToast('Please select the service you are interested in.');
+      return;
+    }
+    notes = detailsEl ? detailsEl.value.trim() : '';
+    if (notes.length < 5) {
+      highlightError(detailsEl);
+      showToast('Please provide a brief description of your requirements.');
+      return;
+    }
+    cityArea = 'Ahmedabad';
+  }
+
+  // Submit button state management
+  const submitBtn = isVisit
+    ? document.querySelector('#tab-visit .btn-primary')
+    : document.querySelector('#tab-quote .btn-primary');
+  const originalBtnText = submitBtn ? submitBtn.innerText : '';
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerText = 'Submitting...';
+  }
+
+  // Construct structured lead payload compatible with JFS-OS
+  const leadPayload = {
+    name: name,
+    phone: cleanPhone,
+    email: emailEl ? emailEl.value.trim() : '',
+    city: cityArea || 'Ahmedabad',
+    service: service,
+    budget: budgetEl ? budgetEl.value : '',
+    date: dateEl ? dateEl.value : '',
+    notes: notes,
+    source: isVisit ? 'Website - Free Site Visit' : 'Website - Quote Request',
+    stage: isVisit ? 'Site Visit' : 'Lead'
+  };
+
+  // 1. Send securely to JFS-OS backend
+  let apiSuccess = false;
+  let isDuplicate = false;
+  try {
+    const res = await fetch(JFS_CONFIG.apiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(leadPayload)
+    });
+    const result = await res.json().catch(() => ({}));
+    if (res.ok && result.success) {
+      apiSuccess = true;
+      if (result.duplicate) {
+        isDuplicate = true;
+      }
+    } else {
+      console.warn('JFS-OS Lead Ingestion response not OK:', result);
+      // Even if network or response was not OK, fallback gracefully
+      apiSuccess = false;
+    }
+  } catch (err) {
+    console.warn('JFS-OS Lead Ingestion fetch failed (network/CORS):', err);
+    apiSuccess = false;
+  } finally {
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerText = originalBtnText;
+    }
+  }
+
+  // 2. Compose WhatsApp message
+  let waText = '';
+  if (isVisit) {
+    waText = 'Namaste Jangid Furniture Studio, I would like to book a free site visit.\n\n' +
+      'Name: ' + name + '\n' +
+      'Phone: +91 ' + cleanPhone + '\n' +
+      'Area: ' + cityArea +
+      (dateEl && dateEl.value ? ('\nPreferred Date: ' + dateEl.value) : '') +
+      (notes ? ('\nRequirements: ' + notes) : '');
+  } else {
+    waText = 'Namaste Jangid Furniture Studio, I would like to request a quotation.\n\n' +
+      'Name: ' + name + '\n' +
+      'Phone: +91 ' + cleanPhone + '\n' +
+      'Service: ' + service +
+      (budgetEl && budgetEl.value ? ('\nBudget: ' + budgetEl.value) : '') +
+      '\nProject Details: ' + notes;
+  }
+  const waUrl = 'https://wa.me/' + JFS_CONFIG.whatsappNumber + '?text=' + encodeURIComponent(waText);
+
+  // 3. Compose Email Fallback
+  const mailSubject = encodeURIComponent(isVisit ? 'Site Visit Booking - ' + name : 'Quote Request - ' + name + ' (' + service + ')');
+  const mailBody = encodeURIComponent(waText);
+  const mailtoUrl = 'mailto:' + (JFS_CONFIG.ownerEmail || 'jangidfurniturestudio@gmail.com') + '?subject=' + mailSubject + '&body=' + mailBody;
+
+  // 4. Update UI with verified status
+  if (successCard && successMsg && waLink) {
+    if (apiSuccess) {
+      if (successTitle) successTitle.textContent = isDuplicate ? '✓ Inquiry Already Active!' : '✓ Inquiry Sent to Workshop!';
+      successMsg.textContent = isDuplicate
+        ? 'Thank you, ' + name + '! We already received your inquiry a few minutes ago. Our workshop team is reviewing it. Tap below to chat instantly on WhatsApp.'
+        : 'Thank you, ' + name + '! Your inquiry has been sent directly to our workshop dashboard. For instant assistance, tap below to chat on WhatsApp.';
+    } else {
+      if (successTitle) successTitle.textContent = '✓ Inquiry Ready!';
+      successMsg.textContent = 'Thank you, ' + name + '! Tap below to send your details directly to our craftsman team on WhatsApp, or give us a quick call.';
+    }
+    waLink.href = waUrl;
+    if (mailLink) mailLink.href = mailtoUrl;
+    successCard.classList.add('active');
+  }
+
+  showToast(apiSuccess ? '✓ Inquiry submitted! Check WhatsApp for quick response.' : '✓ Inquiry ready! Tap WhatsApp to send.');
+
+  // Reset inputs
+  nameEl.value = '';
+  phoneEl.value = '';
+  if (cityEl) cityEl.value = '';
+  if (dateEl) dateEl.value = '';
+  if (msgEl) msgEl.value = '';
+  if (emailEl) emailEl.value = '';
+  if (srvEl) srvEl.value = '';
+  if (budgetEl) budgetEl.value = '';
+  if (detailsEl) detailsEl.value = '';
+}
+
+function highlightError(el) {
+  if (!el) return;
+  el.focus();
+  el.style.borderColor = '#e74c3c';
+  el.style.boxShadow = '0 0 0 3px rgba(231,76,60,0.2)';
+  setTimeout(() => {
+    el.style.borderColor = '';
+    el.style.boxShadow = '';
+  }, 2500);
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  if (!toast) return;
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 4000);
+}
+
+// ===================== SCROLL ANIMATIONS =====================
+function initFadeUps() {
+  const activePage = document.querySelector('.page.active');
+  if (!activePage) return;
+  const activePageFadeUps = activePage.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  activePageFadeUps.forEach(el => observer.observe(el));
+}
+
+// ===================== COUNTER ANIMATION =====================
+function animateCounters() {
+  const activePage = document.querySelector('.page.active');
+  if (!activePage) return;
+  const counters = activePage.querySelectorAll('[data-count]');
+  counters.forEach(el => {
+    const target = parseInt(el.dataset.count);
+    const suffix = target === 5 ? '' : '+';
+    let start = 0;
+    const duration = 1500;
+    const step = Math.ceil(target / (duration / 16));
+    const timer = setInterval(() => {
+      start = Math.min(start + step, target);
+      el.textContent = start + suffix;
+      if (start >= target) clearInterval(timer);
+    }, 16);
+  });
+}
+
+// ===================== INIT =====================
+window.addEventListener('DOMContentLoaded', () => {
+  initFadeUps();
+  animateCounters();
+});
+setTimeout(() => { initFadeUps(); animateCounters(); }, 250);
+
+</script>
+</body>
+</html>
