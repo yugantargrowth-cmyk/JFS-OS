@@ -7,15 +7,15 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'icons/icon-192.png', 'icons/icon-512.png'],
+      includeAssets: ['favicon.svg', 'icons/icon-192.png', 'icons/icon-512.png', 'custom-sw.js'],
       manifest: {
         name: 'JFS Partner Hub',
         short_name: 'JFS Hub',
-        description: 'Jangid Furniture Studio — partner, referral and sales workspace with June AI.',
+        description: 'Jangid Furniture Studio — Lead Operations and AI Sales Hub',
         theme_color: '#0f1d1c',
         background_color: '#0f1d1c',
         display: 'standalone',
-        orientation: 'landscape',
+        orientation: 'any',
         start_url: '/',
         scope: '/',
         icons: [
@@ -26,15 +26,12 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,ico}'],
+        importScripts: ['/custom-sw.js'],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/.*\.supabase\.co\/.*$/,
             handler: 'NetworkFirst',
-            options: { cacheName: 'supabase-cache', networkTimeoutSeconds: 6 }
-          },
-          {
-            urlPattern: /^https:\/\/api\.groq\.com\/.*$/,
-            handler: 'NetworkOnly'
+            options: { cacheName: 'supabase-cache', networkTimeoutSeconds: 5 }
           }
         ]
       }

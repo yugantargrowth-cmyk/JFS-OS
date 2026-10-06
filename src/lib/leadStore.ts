@@ -3,7 +3,6 @@ import { Lead, LeadStage, HubSettings } from './types';
 const LEADS_STORAGE_KEY = 'jfs_leads_v2';
 const SETTINGS_STORAGE_KEY = 'jfs_hub_settings_v2';
 
-// Today's ISO date string (YYYY-MM-DD) in local time
 export function getTodayDateString(): string {
   const d = new Date();
   const year = d.getFullYear();
@@ -22,9 +21,9 @@ export function getOffsetDateString(daysOffset: number): string {
 }
 
 const DEFAULT_SETTINGS: HubSettings = {
-  googleSheetWebAppUrl: '',
   businessName: 'Jangid Furniture Studio',
-  ownerPhone: '+919714461172'
+  ownerPhone: '+919714461172',
+  pushNotificationsEnabled: false
 };
 
 const INITIAL_SAMPLE_LEADS: Lead[] = [
@@ -37,9 +36,9 @@ const INITIAL_SAMPLE_LEADS: Lead[] = [
     service: 'Modular Kitchen',
     budget: '₹2.5L - ₹3.5L',
     source: 'Website Lead',
-    stage: 'Today Follow-up' as any === 'Follow-up' ? 'Follow-up' : 'Follow-up',
+    stage: 'Follow-up',
     next_action: 'Call to review 3D layout options and final finish selection',
-    next_follow_up_date: getTodayDateString(), // Today!
+    next_follow_up_date: getTodayDateString(),
     quote_amount: 285000,
     site_visit_date: getOffsetDateString(-3),
     notes: 'Acrylic finish L-shaped modular kitchen with Hafele soft-close fittings.',
@@ -56,7 +55,7 @@ const INITIAL_SAMPLE_LEADS: Lead[] = [
     source: 'Referral',
     stage: 'Site Visit',
     next_action: 'Site visit for master bedroom wardrobe laser measurements at 4:30 PM',
-    next_follow_up_date: getTodayDateString(), // Today!
+    next_follow_up_date: getTodayDateString(),
     site_visit_date: getTodayDateString(),
     notes: 'Floor-to-ceiling sliding wardrobe with bronze tinted mirror panels.',
     created_at: getOffsetDateString(-2),
@@ -72,7 +71,7 @@ const INITIAL_SAMPLE_LEADS: Lead[] = [
     source: 'Website Lead',
     stage: 'Quotation',
     next_action: 'Send revised formal PDF quotation with 10mm toughened glass specs',
-    next_follow_up_date: getOffsetDateString(1), // Tomorrow
+    next_follow_up_date: getOffsetDateString(1),
     quote_amount: 420000,
     site_visit_date: getOffsetDateString(-2),
     notes: 'Corporate cabin partitions with slim black aluminium profile frames.',
@@ -89,7 +88,7 @@ const INITIAL_SAMPLE_LEADS: Lead[] = [
     source: 'Website Lead',
     stage: 'Lead',
     next_action: 'First introductory call to understand requirements and offer site visit',
-    next_follow_up_date: getOffsetDateString(-1), // Overdue!
+    next_follow_up_date: getOffsetDateString(-1),
     notes: 'Parallel kitchen enquiry from website. Preferred afternoon call.',
     created_at: getOffsetDateString(-2),
     updated_at: getOffsetDateString(-1)
@@ -121,7 +120,7 @@ const INITIAL_SAMPLE_LEADS: Lead[] = [
     source: 'WhatsApp',
     stage: 'Negotiation',
     next_action: 'Negotiate final price including waterproof hardware warranty',
-    next_follow_up_date: getTodayDateString(), // Today!
+    next_follow_up_date: getTodayDateString(),
     quote_amount: 95000,
     site_visit_date: getOffsetDateString(-4),
     notes: '2 bathroom vanities and utility area moisture-proof PVC cabinets.',
@@ -152,7 +151,7 @@ export function getLeads(): Lead[] {
 export function saveLead(leadData: Partial<Lead> & { customer_name: string; phone: string }): Lead {
   const currentLeads = getLeads();
   const now = new Date().toISOString();
-  
+
   if (leadData.id) {
     // Update existing
     const index = currentLeads.findIndex((l) => l.id === leadData.id);
@@ -169,10 +168,11 @@ export function saveLead(leadData: Partial<Lead> & { customer_name: string; phon
   }
 
   // Create new
+  const cleanPhone = leadData.phone.replace(/[^0-9]/g, '').slice(-10);
   const newLead: Lead = {
     id: 'lead-' + Date.now() + '-' + Math.random().toString(36).substring(2, 6),
     customer_name: leadData.customer_name.trim(),
-    phone: leadData.phone.trim(),
+    phone: cleanPhone || leadData.phone.trim(),
     email: leadData.email ? leadData.email.trim() : '',
     city_area: leadData.city_area ? leadData.city_area.trim() : 'Ahmedabad',
     service: leadData.service || 'Modular Kitchen',
@@ -190,6 +190,14 @@ export function saveLead(leadData: Partial<Lead> & { customer_name: string; phon
 
   const updatedLeads = [newLead, ...currentLeads];
   localStorage.setItem(LEADS_STORAGE_KEY, JSON.stringify(updatedLeads));
+
+  // Asynchronously broadcast to backend /api/leads if available
+  fetch('/api/leads', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newLead)
+  }).catch(() => {});
+
   return newLead;
 }
 
@@ -197,6 +205,72 @@ export function deleteLead(leadId: string): void {
   const currentLeads = getLeads();
   const filtered = currentLeads.filter((l) => l.id !== leadId);
   localStorage.setItem(LEADS_STORAGE_KEY, JSON.stringify(filtered));
+}
+
+// Non-destructive live fetch from server API
+export async function fetchLiveLeads(): Promise<{ success: boolean; count: number; error?: string }> {
+  try {
+    const res = await fetch('/api/leads');
+    if (!res.ok) {
+      return { success: false, count: 0, error: `Server responded with status ${res.status}` };
+    }
+    const data = await res.json();
+    if (data.success && Array.isArray(data.leads) && data.leads.length > 0) {
+      const currentLeads = getLeads();
+      const existingMap = new Map<string, Lead>();
+
+      // Index current leads by ID and clean phone
+      currentLeads.forEach((l) => {
+        existingMap.set(l.id, l);
+        const cleanP = l.phone.replace(/[^0-9]/g, '').slice(-10);
+        if (cleanP) existingMap.set(`phone_${cleanP}`, l);
+      });
+
+      // Non-destructively merge: server records override base fields, but local notes / stage progression preserved
+      const mergedList: Lead[] = [];
+      const seenIds = new Set<string>();
+
+      for (const serverLead of data.leads) {
+        const cleanP = (serverLead.phone || '').replace(/[^0-9]/g, '').slice(-10);
+        const localMatch = existingMap.get(serverLead.id) || (cleanP ? existingMap.get(`phone_${cleanP}`) : null);
+
+        const merged: Lead = {
+          ...serverLead,
+          id: serverLead.id,
+          customer_name: serverLead.customer_name || localMatch?.customer_name || 'Customer',
+          phone: cleanP || serverLead.phone || localMatch?.phone || '',
+          stage: localMatch?.stage || serverLead.stage || 'Lead',
+          next_action: localMatch?.next_action || serverLead.next_action || 'Review lead',
+          next_follow_up_date: localMatch?.next_follow_up_date || serverLead.next_follow_up_date || getTodayDateString(),
+          quote_amount: localMatch?.quote_amount ?? serverLead.quote_amount,
+          site_visit_date: localMatch?.site_visit_date || serverLead.site_visit_date || '',
+          notes: localMatch?.notes || serverLead.notes || '',
+          city_area: serverLead.city_area || localMatch?.city_area || 'Ahmedabad',
+          service: serverLead.service || localMatch?.service || 'Modular Kitchen',
+          source: serverLead.source || localMatch?.source || 'Website Lead',
+          created_at: serverLead.created_at || localMatch?.created_at || new Date().toISOString(),
+          updated_at: serverLead.updated_at || localMatch?.updated_at || new Date().toISOString()
+        };
+
+        mergedList.push(merged);
+        seenIds.add(merged.id);
+      }
+
+      // Preserve any purely local leads that haven't synced yet
+      for (const localLead of currentLeads) {
+        if (!seenIds.has(localLead.id)) {
+          mergedList.push(localLead);
+        }
+      }
+
+      localStorage.setItem(LEADS_STORAGE_KEY, JSON.stringify(mergedList));
+      saveHubSettings({ lastSyncedAt: new Date().toISOString() });
+      return { success: true, count: mergedList.length };
+    }
+    return { success: true, count: 0 };
+  } catch (err: any) {
+    return { success: false, count: 0, error: err.message };
+  }
 }
 
 export function getHubSettings(): HubSettings {
@@ -242,7 +316,8 @@ export function calculateSummary(leads: Lead[]): HubSummary {
   let wonRevenue = 0;
 
   for (const lead of leads) {
-    if (lead.stage === 'Lead') newLeads++;
+    // Aligns with filter tabs: New Leads includes 'Lead' and 'Contact'
+    if (lead.stage === 'Lead' || lead.stage === 'Contact') newLeads++;
     if (lead.stage === 'Site Visit') siteVisits++;
     if (lead.stage === 'Quotation' || lead.stage === 'Follow-up' || lead.stage === 'Negotiation') {
       quotations++;
@@ -256,7 +331,7 @@ export function calculateSummary(leads: Lead[]): HubSummary {
       lostLeads++;
     }
 
-    // Active leads check for follow-up status (exclude Won and Lost)
+    // Active leads follow-up status
     if (lead.stage !== 'WON' && lead.stage !== 'Lost' && lead.stage !== 'Referral') {
       const fDate = lead.next_follow_up_date;
       if (fDate) {
@@ -273,6 +348,7 @@ export function calculateSummary(leads: Lead[]): HubSummary {
     totalLeads: leads.length,
     newLeads,
     todayFollowUps,
+    todayFollowUpsVal: todayFollowUps,
     overdueFollowUps,
     siteVisits,
     quotations,
@@ -280,7 +356,7 @@ export function calculateSummary(leads: Lead[]): HubSummary {
     lostLeads,
     quotationPipelineValue,
     wonRevenue
-  };
+  } as any;
 }
 
 export function exportLeadsToCsv(leads: Lead[]): string {
@@ -323,50 +399,56 @@ export function exportLeadsToCsv(leads: Lead[]): string {
   return [headers.join(','), ...rows.map((r) => r.join(','))].join('\r\n');
 }
 
-export async function syncFromGoogleSheet(url: string): Promise<{ success: boolean; count: number; error?: string }> {
-  if (!url || !url.startsWith('http')) {
-    return { success: false, count: 0, error: 'Please enter a valid Google Apps Script Web App URL.' };
+// Convert urlBase64 to Uint8Array for VAPID subscription
+function urlBase64ToUint8Array(base64String: string) {
+  const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+  const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/');
+  const rawData = window.atob(base64);
+  const outputArray = new Uint8Array(rawData.length);
+  for (let i = 0; i < rawData.length; ++i) {
+    outputArray[i] = rawData.charCodeAt(i);
+  }
+  return outputArray;
+}
+
+// Web Push Registration Helper
+export async function registerPushNotifications(): Promise<{ success: boolean; message: string }> {
+  if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
+    return { success: false, message: 'Web Push is not supported by your browser.' };
+  }
+
+  const permission = await Notification.requestPermission();
+  if (permission !== 'granted') {
+    return { success: false, message: 'Notification permission was denied.' };
   }
 
   try {
-    const res = await fetch(url, { method: 'GET' });
-    if (!res.ok) {
-      return { success: false, count: 0, error: `HTTP ${res.status}: Failed to reach Google Sheet` };
-    }
-    const data = await res.json();
-    if (data.status === 'success' && Array.isArray(data.leads)) {
-      const mapped: Lead[] = data.leads.map((row: any, idx: number) => {
-        return {
-          id: row.id || `lead-sheet-${idx}-${Date.now()}`,
-          customer_name: row.customer_name || row.name || 'Unknown',
-          phone: String(row.phone_number || row.phone || ''),
-          email: row.email || '',
-          city_area: row.city___area || row.city || 'Ahmedabad',
-          service: row.service || 'Modular Kitchen',
-          budget: row.budget || '',
-          source: row.source || 'Website',
-          stage: (row.stage as LeadStage) || 'Lead',
-          next_action: row.next_action || 'Review sheet lead',
-          next_follow_up_date: row.next_follow_up_date || getTodayDateString(),
-          quote_amount: row.quote_amount ? Number(row.quote_amount) : undefined,
-          site_visit_date: row.preferred_date || row.site_visit_date || '',
-          notes: row.requirements___notes || row.notes || '',
-          created_at: row.timestamp || new Date().toISOString(),
-          updated_at: new Date().toISOString()
-        };
-      });
+    const keyRes = await fetch('/api/push/subscribe');
+    if (!keyRes.ok) throw new Error('Could not fetch VAPID key');
+    const { publicKey } = await keyRes.json();
+    if (!publicKey) throw new Error('No public VAPID key returned');
 
-      if (mapped.length > 0) {
-        localStorage.setItem(LEADS_STORAGE_KEY, JSON.stringify(mapped));
-        saveHubSettings({ lastSyncedAt: new Date().toISOString() });
-        return { success: true, count: mapped.length };
-      } else {
-        return { success: true, count: 0 };
-      }
-    } else {
-      return { success: false, count: 0, error: data.message || 'Invalid response from Google Apps Script' };
+    const registration = await navigator.serviceWorker.ready;
+    let subscription = await registration.pushManager.getSubscription();
+
+    if (!subscription) {
+      subscription = await registration.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: urlBase64ToUint8Array(publicKey)
+      });
     }
+
+    const saveRes = await fetch('/api/push/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ subscription })
+    });
+
+    if (!saveRes.ok) throw new Error('Failed to save subscription on server');
+
+    saveHubSettings({ pushNotificationsEnabled: true });
+    return { success: true, message: 'Push notifications activated successfully! You will receive an alert whenever a new lead arrives.' };
   } catch (err: any) {
-    return { success: false, count: 0, error: err.message || 'Network error syncing with Google Sheet' };
+    return { success: false, message: err.message || 'Error subscribing to notifications' };
   }
 }

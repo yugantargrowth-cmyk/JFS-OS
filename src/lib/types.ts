@@ -42,13 +42,18 @@ export interface Lead {
   quote_amount?: number;
   site_visit_date?: string;
   notes?: string;
+  partner_id?: string;
+  partner_name?: string;
   created_at: string;
   updated_at: string;
 }
 
 export interface HubSettings {
-  googleSheetWebAppUrl: string;
-  lastSyncedAt?: string;
+  supabaseUrl?: string;
+  supabaseAnonKey?: string;
+  groqApiKey?: string;
   businessName: string;
   ownerPhone: string;
+  lastSyncedAt?: string;
+  pushNotificationsEnabled?: boolean;
 }

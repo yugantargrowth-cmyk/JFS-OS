@@ -1,15 +1,17 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import {
   Phone, MessageSquare, Calendar, Plus, Search, CheckCircle2,
   Clock, AlertCircle, FileText, ArrowRight, X, Download, RefreshCw,
-  MapPin, Settings as SettingsIcon, LayoutGrid, Check, ExternalLink
+  MapPin, Settings as SettingsIcon, LayoutGrid, Check, ExternalLink,
+  Sparkles, Bell, BellRing, ShieldCheck, Database
 } from 'lucide-react';
 import { Lead, LeadStage, LEAD_STAGES, HubSettings } from './lib/types';
 import {
   getLeads, saveLead, deleteLead, getHubSettings, saveHubSettings,
-  calculateSummary, exportLeadsToCsv, syncFromGoogleSheet,
+  calculateSummary, exportLeadsToCsv, fetchLiveLeads, registerPushNotifications,
   getTodayDateString, getOffsetDateString
 } from './lib/leadStore';
+import JuneWorkspace from './components/JuneWorkspace';
 
 function fmtINR(amount?: number): string {
   if (!amount || isNaN(amount)) return '₹0';
@@ -26,6 +28,9 @@ export default function App() {
   const [filterTab, setFilterTab] = useState<'today' | 'all' | 'new' | 'visits' | 'quotes' | 'won' | 'settings'>('today');
   const [searchQuery, setSearchQuery] = useState('');
   
+  // June AI workspace state
+  const [isJuneOpen, setIsJuneOpen] = useState(false);
+
   // Modals state
   const [editingLead, setEditingLead] = useState<Lead | null>(null);
   const [isAddOpen, setIsAddOpen] = useState(false);
@@ -45,6 +50,7 @@ export default function App() {
   // Sync state
   const [syncLoading, setSyncLoading] = useState(false);
   const [syncStatus, setSyncStatus] = useState<string | null>(null);
+  const [pushStatus, setPushStatus] = useState<string | null>(null);
 
   const summary = useMemo(() => calculateSummary(leads), [leads]);
   const today = getTodayDateString();
@@ -52,6 +58,35 @@ export default function App() {
   function refreshLeads() {
     setLeads(getLeads());
   }
+
+  // Live data sync and deep linking on mount
+  useEffect(() => {
+    // 1. Initial live fetch
+    fetchLiveLeads().then(() => {
+      setLeads(getLeads());
+    });
+
+    // 2. Poll backend every 15s to catch new incoming website leads
+    const timer = setInterval(() => {
+      fetchLiveLeads().then((res) => {
+        if (res.success && res.count > 0) {
+          setLeads(getLeads());
+        }
+      });
+    }, 15000);
+
+    // 3. Deep linking for notifications: ?leadId=...
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetLeadId = urlParams.get('leadId');
+    if (targetLeadId) {
+      const match = getLeads().find((l) => l.id === targetLeadId);
+      if (match) {
+        setEditingLead(match);
+      }
+    }
+
+    return () => clearInterval(timer);
+  }, []);
 
   // Filter leads based on selected tab and search
   const filteredLeads = useMemo(() => {
@@ -68,7 +103,6 @@ export default function App() {
 
       // Tab match
       if (filterTab === 'today') {
-        // Today's Follow-ups + Overdue
         if (lead.stage === 'WON' || lead.stage === 'Lost' || lead.stage === 'Referral') return false;
         return (lead.next_follow_up_date && lead.next_follow_up_date <= today);
       }
@@ -150,24 +184,29 @@ export default function App() {
     document.body.removeChild(link);
   }
 
-  // Sync Google Sheet
-  async function handleGoogleSheetSync() {
-    if (!settings.googleSheetWebAppUrl) {
-      alert('Please enter your Google Apps Script Web App URL first.');
-      return;
-    }
+  // Trigger Live Sync from Server API
+  async function handleRefreshLive() {
     setSyncLoading(true);
-    setSyncStatus('Connecting to Google Sheet…');
-    const result = await syncFromGoogleSheet(settings.googleSheetWebAppUrl);
+    setSyncStatus('Checking backend for new website leads…');
+    const result = await fetchLiveLeads();
     setSyncLoading(false);
     if (result.success) {
-      setSyncStatus(`✓ Successfully synced ${result.count} leads from Google Sheet!`);
+      setSyncStatus(`✓ Connected to JFS-OS backend (${result.count} leads synchronized).`);
       setSettings(getHubSettings());
       refreshLeads();
     } else {
-      setSyncStatus(`⚠ Sync Notice: ${result.error}`);
+      setSyncStatus(`Notice: ${result.error || 'Running in local cache mode.'}`);
     }
-    setTimeout(() => setSyncStatus(null), 6000);
+    setTimeout(() => setSyncStatus(null), 5000);
+  }
+
+  // Handle Push Notification Activation
+  async function handleEnablePush() {
+    setPushStatus('Requesting notification permission…');
+    const res = await registerPushNotifications();
+    setPushStatus(res.message);
+    setSettings(getHubSettings());
+    setTimeout(() => setPushStatus(null), 6000);
   }
 
   return (
@@ -207,6 +246,11 @@ export default function App() {
                 </button>
               )}
             </div>
+
+            {/* June AI Workspace Button */}
+            <button className="june-dock-btn" onClick={() => setIsJuneOpen(true)}>
+              <Sparkles size={15} /> Ask June
+            </button>
 
             <button className="btn btn-primary" onClick={() => setIsAddOpen(true)}>
               <Plus size={16} /> Add Lead
@@ -335,11 +379,14 @@ export default function App() {
               onClick={() => setFilterTab('settings')}
             >
               <SettingsIcon size={14} />
-              Google Sheet & Settings
+              Settings & Integrations
             </button>
           </div>
 
           <div style={{ display: 'flex', gap: '8px' }}>
+            <button className="btn btn-secondary btn-sm" onClick={handleRefreshLive} title="Sync latest website leads">
+              <RefreshCw size={13} className={syncLoading ? 'spin' : ''} /> Refresh
+            </button>
             <button className="btn btn-secondary btn-sm" onClick={handleExportCsv} title="Export leads to CSV file">
               <Download size={13} /> Export CSV
             </button>
@@ -353,60 +400,72 @@ export default function App() {
           </div>
         )}
 
+        {/* Push Status Banner */}
+        {pushStatus && (
+          <div style={{ padding: '8px 14px', borderRadius: '8px', background: 'rgba(79, 184, 168, 0.15)', border: '1px solid var(--accent-2)', fontSize: '13px', color: '#b2f5ea' }}>
+            {pushStatus}
+          </div>
+        )}
+
         {/* Settings View */}
         {filterTab === 'settings' ? (
           <div className="settings-section">
             <div className="settings-title">
-              <SettingsIcon size={18} /> Google Sheets Connection & Data Source
+              <SettingsIcon size={18} /> JFS-OS System Settings & Integrations
             </div>
             <p style={{ fontSize: '13.5px', color: 'var(--muted)', lineHeight: '1.6' }}>
-              Jangid Furniture Studio operates around the owner's personal Gmail Google Sheet.
-              Incoming website inquiries automatically append to your Sheet, and this Hub connects to keep leads synchronized.
+              Jangid Furniture Studio operations run on the unified JFS-OS architecture. Public website inquiries flow directly into the JFS-OS database and trigger real-time phone push notifications.
             </p>
 
-            <div className="guide-box">
-              <strong style={{ color: 'var(--text)' }}>3-Step Setup for Personal Gmail Account:</strong>
-              <ol>
-                <li>Create a Google Sheet in your personal Google Drive called <strong>"JFS Leads Database"</strong>.</li>
-                <li>Go to <strong>Extensions → Apps Script</strong>, paste the code from <code>website/google-apps-script.js</code>, and click <strong>Deploy → New deployment → Web app</strong> (Access: Anyone).</li>
-                <li>Copy the generated Web App URL and paste it below:</li>
-              </ol>
+            {/* Web Push Notification Settings Box */}
+            <div className="push-status-bar">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <BellRing size={20} style={{ color: 'var(--accent-2)' }} />
+                <div>
+                  <strong style={{ display: 'block', fontSize: '13.5px' }}>Mobile & Desktop Push Notifications</strong>
+                  <span style={{ fontSize: '12px', color: 'var(--muted)' }}>
+                    Receive instant alerts on your phone whenever a customer submits an inquiry from the website.
+                  </span>
+                </div>
+              </div>
+              <button className="btn btn-primary btn-sm" onClick={handleEnablePush}>
+                <Bell size={14} /> Enable Phone Notifications
+              </button>
             </div>
 
-            <div className="form-group" style={{ marginTop: '8px' }}>
-              <label className="form-label">Google Apps Script Web App URL</label>
-              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                <input
-                  type="url"
-                  placeholder="https://script.google.com/macros/s/.../exec"
-                  className="form-input"
-                  style={{ flex: 1, minWidth: '280px' }}
-                  value={settings.googleSheetWebAppUrl}
-                  onChange={(e) => {
-                    const updated = saveHubSettings({ googleSheetWebAppUrl: e.target.value.trim() });
-                    setSettings(updated);
-                  }}
-                />
-                <button
-                  className="btn btn-primary"
-                  onClick={handleGoogleSheetSync}
-                  disabled={syncLoading || !settings.googleSheetWebAppUrl}
-                >
-                  <RefreshCw size={14} className={syncLoading ? 'spin' : ''} />
-                  {syncLoading ? 'Syncing…' : 'Sync From Sheet'}
+            {/* June AI Operations Partner Box */}
+            <div className="guide-box">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                <Sparkles size={16} style={{ color: 'var(--accent)' }} />
+                <strong style={{ color: 'var(--text)', fontSize: '14px' }}>June — Operations & Sales AI</strong>
+              </div>
+              <p style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: '1.6' }}>
+                June is accessible at any time from the top navigation bar. It is powered by Groq's high-speed inference engine with direct read/write tools to inspect your live pipeline, update lead stages, schedule follow-ups, and answer questions truthfully using real database records.
+              </p>
+              <div style={{ marginTop: '10px' }}>
+                <button className="btn btn-secondary btn-sm" onClick={() => setIsJuneOpen(true)}>
+                  <Sparkles size={13} /> Open June AI Workspace
                 </button>
               </div>
-              {settings.lastSyncedAt && (
-                <div style={{ fontSize: '12px', color: 'var(--muted)', marginTop: '4px' }}>
-                  Last synced: {new Date(settings.lastSyncedAt).toLocaleString('en-IN')}
-                </div>
-              )}
             </div>
 
-            <div style={{ display: 'flex', gap: '12px', marginTop: '14px', flexWrap: 'wrap' }}>
-              <button className="btn btn-secondary" onClick={handleExportCsv}>
-                <Download size={15} /> Download All Leads as CSV
-              </button>
+            {/* Data Layer & Backup */}
+            <div className="guide-box">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                <Database size={16} style={{ color: 'var(--accent-2)' }} />
+                <strong style={{ color: 'var(--text)', fontSize: '14px' }}>Data Protection & Offline Safety</strong>
+              </div>
+              <p style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: '1.6' }}>
+                Google Sheets dependency has been removed. All customer inquiries, notes, quotations, and stages are stored safely with non-destructive caching so your pipeline is always accessible even on remote job sites without internet.
+              </p>
+              <div style={{ display: 'flex', gap: '8px', marginTop: '10px', flexWrap: 'wrap' }}>
+                <button className="btn btn-secondary btn-sm" onClick={handleRefreshLive}>
+                  <RefreshCw size={13} /> Synchronize Live Database
+                </button>
+                <button className="btn btn-secondary btn-sm" onClick={handleExportCsv}>
+                  <Download size={13} /> Export All Leads as CSV
+                </button>
+              </div>
             </div>
           </div>
         ) : (
@@ -426,11 +485,12 @@ export default function App() {
                 const isToday = lead.next_follow_up_date && lead.next_follow_up_date === today && lead.stage !== 'WON' && lead.stage !== 'Lost' && lead.stage !== 'Referral';
                 const isWon = lead.stage === 'WON' || lead.stage === 'Installation' || lead.stage === 'Referral';
 
-                // Customized WhatsApp message
+                // Normalized 10-digit phone for WhatsApp link
+                const cleanPhone = lead.phone.replace(/[^0-9]/g, '').slice(-10);
                 const waMessage = encodeURIComponent(
                   `Namaste ${lead.customer_name} ji, this is from Jangid Furniture Studio, Ahmedabad regarding your ${lead.service} inquiry. We are following up regarding your project.`
                 );
-                const waUrl = `https://wa.me/91${lead.phone.replace(/[^0-9]/g, '')}?text=${waMessage}`;
+                const waUrl = `https://wa.me/91${cleanPhone}?text=${waMessage}`;
 
                 return (
                   <div
@@ -517,7 +577,7 @@ export default function App() {
                         </a>
 
                         <a
-                          href={`tel:${lead.phone}`}
+                          href={`tel:${cleanPhone}`}
                           className="btn btn-secondary btn-sm"
                           title="Direct phone call"
                         >
@@ -539,6 +599,13 @@ export default function App() {
           </div>
         )}
       </main>
+
+      {/* JUNE AI FLOATING WORKSPACE */}
+      <JuneWorkspace
+        isOpen={isJuneOpen}
+        onClose={() => setIsJuneOpen(false)}
+        onLeadModified={refreshLeads}
+      />
 
       {/* ADD LEAD MODAL */}
       {isAddOpen && (
